@@ -22,7 +22,8 @@ let citations = [
     ["Vous n’êtes jamais trop vieux pour vous fixer de nouveaux buts, ou rendre vos rêves réalité.", "C.S. Lewis"],
     ["Un pessimiste voit la difficulté dans chaque opportunité. Un optimiste voit une opportunité dans chaque difficulté.", "Winston Churchill"]
   ];
-
+let indice = 0;
+let dernier = 0;
   function genererNombreEntier(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
@@ -31,8 +32,12 @@ let citations = [
   let auteur   = document.getElementById('auteur');
   let btn      = document.getElementById('nouveau');
   btn.addEventListener('click', ()=>{
-    let indice = genererNombreEntier(21);
+    do{
+        indice = genererNombreEntier(citations.length);
+    }while (indice == dernier)
+        
    citation.innerHTML = citations[indice][0];
    auteur.innerHTML   = citations[indice][1];
-   indice ++;
+   dernier = indice;
+   
   })
